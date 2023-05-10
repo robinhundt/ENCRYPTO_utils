@@ -90,7 +90,11 @@ void StopRecording(const std::string& msg, ABYPHASE phase,
 
 void PrintTimings();
 
+void PrintTimingsJson();
+
 void PrintCommunication();
+
+void PrintCommunicationJson();
 
 inline double GetTimeForPhase(ABYPHASE phase) {
 	return m_tTimes[phase].timing;

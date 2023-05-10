@@ -112,6 +112,20 @@ void PrintTimings() {
 	std::cout << "Online =\t" << m_tTimes[P_ONLINE].timing << unit << std::endl;
 }
 
+void PrintTimingsJson() {
+    std::cout << "{"
+        << "\"total\":" << m_tTimes[P_TOTAL].timing << ","
+        << "\"init\":" << m_tTimes[P_INIT].timing << ","
+        << "\"circuit_gen\":" << m_tTimes[P_CIRCUIT].timing << ","
+        << "\"network\":" << m_tTimes[P_NETWORK].timing << ","
+        << "\"base_ots\":" << m_tTimes[P_BASE_OT].timing << ","
+        << "\"setup\":" << m_tTimes[P_SETUP].timing << ","
+        << "\"ot_extension\":" << m_tTimes[P_OT_EXT].timing << ","
+        << "\"garbling\":" << m_tTimes[P_GARBLE].timing << ","
+        << "\"online\":" << m_tTimes[P_ONLINE].timing
+        << "}" << std::endl;
+}
+
 void PrintCommunication() {
 	std::string unit = " bytes";
 	std::cout << "Communication: " << std::endl;
@@ -121,4 +135,22 @@ void PrintCommunication() {
 	std::cout << "OTExtension Sent / Rcv\t" << m_tSend[P_OT_EXT].totalcomm << " " << unit << " / " << m_tRecv[P_OT_EXT].totalcomm << unit << std::endl;
 	std::cout << "Garbling Sent / Rcv\t" << m_tSend[P_GARBLE].totalcomm << " " << unit << " / " << m_tRecv[P_GARBLE].totalcomm << unit << std::endl;
 	std::cout << "Online Sent / Rcv\t" << m_tSend[P_ONLINE].totalcomm << " " << unit << " / " << m_tRecv[P_ONLINE].totalcomm << unit << std::endl;
+}
+
+void PrintCommunicationJson() {
+    std::cout << "{\"sent_bytes\":{"
+        << "\"total\":" << m_tSend[P_TOTAL].totalcomm << ","
+        << "\"base_ot\":" << m_tSend[P_BASE_OT].totalcomm << ","
+        << "\"setup\":" << m_tSend[P_SETUP].totalcomm << ","
+        << "\"ot_extension\":" << m_tSend[P_OT_EXT].totalcomm << ","
+        << "\"garbling\":" << m_tSend[P_GARBLE].totalcomm << ","
+        << "\"online\":" << m_tSend[P_ONLINE].totalcomm
+        << "},\"recv_bytes\":{"
+        << "\"total\":" << m_tRecv[P_TOTAL].totalcomm << ","
+        << "\"base_ot\":" << m_tRecv[P_BASE_OT].totalcomm << ","
+        << "\"setup\":" << m_tRecv[P_SETUP].totalcomm << ","
+        << "\"ot_extension\":" << m_tRecv[P_OT_EXT].totalcomm << ","
+        << "\"garbling\":" << m_tRecv[P_GARBLE].totalcomm << ","
+        << "\"online\":" << m_tRecv[P_ONLINE].totalcomm
+        << "}}" << std::endl;
 }
